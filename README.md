@@ -1,2 +1,2 @@
-# pymar2024
+# Homework3: Marie Ambrazhei
 Python test automation course
