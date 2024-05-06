@@ -1,2 +1,2 @@
-# pymar2024
+# Marie Ambrazhei
 Python test automation course
