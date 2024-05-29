@@ -14,7 +14,7 @@ in Python """
 # последовательность.
 # Ваша задача реализовать программу, против которой можно сыграть в
 # "Быки и коровы"
-
+#
 import random
 import string
 
@@ -57,17 +57,15 @@ play_bulls_and_cows()
 # Необходимо написать программу, которая генерирует такую
 # пирамиду пирамиду со значением N, равным 10
 
-def generate_pyramid(levels):
-    """
-    Print a pyramid with the given number of levels
-    """
-    for i in range(levels):
-        spaces = " " * (levels - i - 1)
-        stars = "*" * (2 * i + 1)
-        print(spaces + stars)
+def print_stars(number):
+    start_string = ' ' * (number * 2 + 1)
+    for elem in range(0, number):
+        stars = '*' * (elem * 2 + 1)
+        spaces = ' ' * int((len(start_string) - len(stars)) / 2)
+        print(f'{spaces}{stars}{spaces}')
 
 
-generate_pyramid(10)
+print_stars(10)
 
 
 # Статуи
