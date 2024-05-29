@@ -58,6 +58,9 @@ play_bulls_and_cows()
 # пирамиду пирамиду со значением N, равным 10
 
 def print_stars(number):
+    """
+    Print a pyramid with the given number of levels
+     """
     start_string = ' ' * (number * 2 + 1)
     for elem in range(0, number):
         stars = '*' * (elem * 2 + 1)
