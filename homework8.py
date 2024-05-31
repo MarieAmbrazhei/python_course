@@ -17,6 +17,7 @@ in Python """
 #
 import random
 import string
+import sys
 
 
 def play_bulls_and_cows():
@@ -28,8 +29,17 @@ def play_bulls_and_cows():
     random.shuffle(digits)
     random_number = ''.join(digits[:4])
     attempt = 0
-    while True:
+    tries = 5
+    while 0 < tries <= 5:
         hidden_four_digit_num = input("ENTER A FOUR-DIGIT NUMBER: ")
+        if len(set(hidden_four_digit_num)) != 4 or len(
+                hidden_four_digit_num) != 4:
+            tries -= 1
+            print(f'Please use unique digits in your number. '
+                  f'Number should contain 4 digits.'
+                  f' You have {tries} left tries')
+            continue
+
         attempt += 1
         bulls = 0
         cows = 0
@@ -42,12 +52,14 @@ def play_bulls_and_cows():
         if bulls == 4:
             print(f"You won in {attempt} steps")
             break
+    if tries == 0:
+        print('Please read the rules, you should enter unique number')
+        sys.exit(0)
 
 
-play_bulls_and_cows()
+# play_bulls_and_cows()
 
-
-# Пирамида
+# # Пирамида
 # Мы можем визуализировать художественную пирамиду ASCII с N уровнями,
 # напечатав
 # N рядов звездочек, где верхний ряд имеет одну звездочку
@@ -102,4 +114,4 @@ def count_missed_statues(statues_list):
 
 
 statues = [6, 2, 3, 8]
-print(count_missed_statues(statues))
+assert count_missed_statues(statues) == 3
