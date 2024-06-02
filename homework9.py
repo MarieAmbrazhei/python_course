@@ -9,12 +9,15 @@ in Python """
 # ввода букв, пустой строки и т.д. Примечания Алгоритм Луна.
 
 
-def validate_card(card_number: str) -> bool:
+def validate_card(card_number: int) -> bool:
     """
     Validate a credit card number using the Luhn algorithm.
     """
-    if isinstance(card_number, str):
-        card_number = card_number.replace(' ', '').strip()
+    if isinstance(card_number, int):
+        card_number = str(card_number)
+    else:
+        print(f'Card number should have datatype int '
+              f'current type is {type(card_number)}')
     even = []
     odd = []
     card_number_reverted = card_number[::-1]
@@ -34,8 +37,9 @@ def validate_card(card_number: str) -> bool:
     return False
 
 
-print(validate_card('4561261212345464'))
-print(validate_card('4561261212345467'))
+# assert validate_card(4561261212345464), 'Please provide correct card number'
+# assert validate_card(4561261212345467)
+# assert validate_card('4561261212345467')
 
 
 # Последовательность
