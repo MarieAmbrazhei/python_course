@@ -39,7 +39,7 @@ def validate_card(card_number: int) -> bool:
 
 # assert validate_card(4561261212345464), 'Please provide correct card number'
 # assert validate_card(4561261212345467)
-# assert validate_card('4561261212345467')
+
 
 
 # Последовательность
