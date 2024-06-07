@@ -16,7 +16,7 @@ from typing import Dict
 # Если ключ уже есть в словаре, верните соответствующее значение. Если ключа
 # нет, вызовите функцию, сохраните результат в словаре и верните его.
 
-cached_results: Dict[str, ...] = {}
+cached_results: Dict[str, int] = {}
 
 
 def cache(func):
