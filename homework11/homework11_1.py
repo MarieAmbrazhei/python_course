@@ -18,7 +18,7 @@ def validate_arguments(func):
 
     def wrapper(*args):
         for arg in args:
-            if arg <= 0:
+            if not isinstance(arg, int) or arg <= 0:
                 raise ValueError(f'Arg {arg} is not a positive number')
         return func(*args)
 
