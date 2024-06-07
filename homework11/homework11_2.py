@@ -25,6 +25,7 @@ def is_number(func):
 @is_number
 def returned_number(a):
     """"Returns the values that were provided as arguments"""
+    return a
 
 
 assert returned_number('a') is None
