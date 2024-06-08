@@ -28,10 +28,7 @@ def validate_arguments(func):
 @validate_arguments
 def result_of_validate(a, b):
     """Prints the passed arguments"""
-    print(a, b)
+    return a, b
 
 
-try:
-    result_of_validate(2, 4)
-except ValueError as e:
-    print(e)
+assert result_of_validate(2, 4) == (2, 4)

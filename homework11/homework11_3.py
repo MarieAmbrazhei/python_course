@@ -1,4 +1,4 @@
-"""Homework11_3:Decorators. Writing and implementing programs."""
+"""Homework11_3:Decorations Writing and implementing programs."""
 
 from functools import wraps
 

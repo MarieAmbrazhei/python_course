@@ -17,7 +17,7 @@ def is_number(func):
         if not isinstance(result, (int, float)):
             print(f'{result} is not a number.')
             return None
-        return func(*args)
+        return result
 
     return wrapper
 
