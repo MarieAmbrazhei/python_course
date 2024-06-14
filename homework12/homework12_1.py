@@ -5,9 +5,9 @@
 
 class Book:
     """Initialize book objects"""
-    taken_books = []
-    reserved_books = []
-    books = {}
+    taken_books = list()
+    reserved_books = list()
+    books = dict()
 
     def __init__(self, name=None, isbn=None, pages=None, author=None):
         self.name = name
@@ -21,7 +21,7 @@ class Book:
 
 class User(Book):
     """Initialize user objects"""
-    users_books = {}
+    users_books = dict()
 
     def __init__(self, user_id):
         """Initializes the User objects"""
