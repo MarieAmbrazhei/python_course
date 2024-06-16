@@ -1,6 +1,7 @@
-"""Homework11_4:Decorators. Writing and implementing programs."""
+"""Homework_11_4:Decorators. Writing and implementing programs."""
 
 from typing import Dict
+
 
 # Функция кэширования *
 # Напишите декоратор @cache, который кэширует результаты вызова функции и
@@ -16,20 +17,19 @@ from typing import Dict
 # Если ключ уже есть в словаре, верните соответствующее значение. Если ключа
 # нет, вызовите функцию, сохраните результат в словаре и верните его.
 
-cached_results: Dict[str, int] = {}
-
 
 def cache(func):
     """ Decorator to cache the results of a function.
     When the function is called with the same arguments,
     it returns the cached result, avoiding repeated computations.
    """
+    cached_results: Dict[str, int] = {}
 
-    def wrapper(n):
-        if cached_results.get(n) is not None:
-            return cached_results[n]
-        result = func(n)
-        cached_results[n] = result
+    def wrapper(*args):
+        if args in cached_results:
+            return cached_results[args]
+        result = func(*args)
+        cached_results[args] = result
         return result
 
     return wrapper
