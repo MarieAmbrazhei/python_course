@@ -1,4 +1,4 @@
-"""Homework_13_1: OOP_2. Writing and implementing programs."""
+"""Homework_13_1: OOP_2.Writing and implementing programs."""
 
 
 # Task_1 Cards deck
