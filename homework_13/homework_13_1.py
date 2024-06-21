@@ -1,6 +1,5 @@
 """Homework_13_1: OOP_2.Writing and implementing programs."""
 
-
 # Task_1 Cards deck
 
 import random
@@ -27,8 +26,8 @@ class CardsDeck:
         for mast in mast_list:
             for number in number_list:
                 self.cards.append(Card(mast, number))
-        self.cards.append(Card("Joker", None))
-        self.cards.append(Card("Joker", None))
+        self.cards.append(Card("black", "Joker"))
+        self.cards.append(Card("red", "Joker"))
 
     def shuffle(self):
         """This method is used to shuffle cards deck"""
@@ -38,7 +37,7 @@ class CardsDeck:
     def get(self, index):
         """This method is used to get cards deck"""
         if 0 <= index < len(self.cards):
-            return self.cards[index].number, self.cards[index].mast
+            return self.cards[index]
         raise IndexError(
             "The card number is outside the permissible range.")
 
@@ -50,5 +49,5 @@ while CONTINUE_GAME.lower() in ['y', 'yes']:
     deck.shuffle()
     card_number = int(input('Выберите карту из колоды в 56 карт: '))
     card = deck.get(card_number)
-    print(f'You card is: {card[0]} {card[1]}')
-    continue_game = input('Continue game? Yes or No?: ')
+    print(f'You card is: {card.number} {card.mast}')
+    CONTINUE_GAME = input('Continue game? Yes or No?: ')
