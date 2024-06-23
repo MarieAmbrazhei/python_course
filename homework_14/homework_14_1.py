@@ -5,11 +5,11 @@
 import os
 
 
-def create_and_write_file(file_path):
+def create_and_write_file(file_name):
     """Create a file and write initial student data if it doesn't exist."""
     # to create file if it not exists
-    if not os.path.exists(file_path):
-        with open(file_path, 'w', encoding='utf-8') as file:
+    if not os.path.exists(file_name):
+        with open(file_name, 'w', encoding='utf-8') as file:
             students = ['Pavel, group 1, 8',
                         'Ivan, group 1, 9',
                         'Petya, group 2, 10',
@@ -22,11 +22,11 @@ def create_and_write_file(file_path):
 # Откройте файл и прочитайте всю
 # информацию из него. Напечатайте общее количество студентов, количество
 # студентов для каждой группы и среднюю оценку для каждой группы.
-def read_and_process_file(file_path):
+def read_and_process_file(file_name):
     """Read the file, calculate and print student statistics."""
     result_info = ''
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as file:
+    if os.path.exists(file_name):
+        with open(file_name, 'r', encoding='utf-8') as file:
             lines = file.readlines()
         total_students = len(lines)
         groups_students_count = {}
@@ -51,21 +51,21 @@ def read_and_process_file(file_path):
                        f'average group grade is {average_group_grade}\n')
         print(result_info)
     else:
-        print(f'File {file_path} does not exist')
+        print(f'File {file_name} does not exist')
     return result_info
 
 
-entire_info = read_and_process_file(file_path='student.txt')
+entire_info = read_and_process_file(file_name='student.txt')
 
 
 # Допишите эту информацию в конец файла.
-def add_result_info(file_path, info):
+def add_result_info(file_name, info):
     """Append the result information to the file."""
-    if os.path.exists(file_path):
-        with open(file_path, 'a', encoding='utf-8') as file:
+    if os.path.exists(file_name):
+        with open(file_name, 'a', encoding='utf-8') as file:
             file.write(info)
     else:
-        print(f'File {file_path} does not exist')
+        print(f'File {file_name} does not exist')
 
 
-add_result_info(file_path='student.txt', info=entire_info)
+add_result_info(file_name='student.txt', info=entire_info)
