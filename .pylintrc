@@ -1,9 +1,4 @@
 [pylint]
 [MESSAGES CONTROL]
 disable=too-few-public-methods
-[MASTER]
-init-hook='import sys; sys.path.append(".")'
-pylint --init-hook='import sys; sys.path.extend(["./homework12", "./homework20"])' homework20/test_bank_functionality.py
-[MESSAGES CONTROL]
 disable=logging-fstring-interpolation
-
