@@ -1,5 +1,3 @@
 [pylint]
 [MESSAGES CONTROL]
-disable=too-few-public-methods
-disable=logging-fstring-interpolation
-disable=R0903, C0206, R0911, R0801
+disable=R0903, C0206, R0911, R0801, W1203, C0114
