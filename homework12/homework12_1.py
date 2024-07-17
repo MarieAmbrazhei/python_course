@@ -107,7 +107,7 @@ class User(Book):
             log.warning(
                 f'The book with {isbn} was not reserved '
                 f'by user with id {self.user_id}'
-                f'additional info: {self.books.get(isbn)}')
+                f' additional info: {self.books.get(isbn)}')
             return False
 
         log.info(
