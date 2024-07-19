@@ -141,7 +141,8 @@ def test_release_book_not_reserved(user_2):
     """Test that a user cannot release a book that was not reserved."""
     log.info('User tries to release a not reserved book with 239874 isbn')
     assert user_2.release_book('239874') is False, (
-        'User was able to release a book with ISBN 239874 that was not reserved'
+        'User was able to release a book with ISBN 239874 that was not '
+        'reserved'
     )
     log.info(
         'Successfully verified user cannot release a book that was not'
@@ -155,8 +156,8 @@ def test_take_invalid_book(user_1):
         'User was able to take a book with ISBN 111111 that does not exist'
     )
     log.info(
-        'Successfully verified user cannot take a non-existent book with ISBN  '
-        '111111')
+        'Successfully verified user cannot take a non-existent book with'
+        ' ISBN 111111')
 
 
 def test_reserve_invalid_book(user_1):

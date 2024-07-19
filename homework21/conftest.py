@@ -1,6 +1,7 @@
 from pymar_logging import logger as log
 from constants import LOG_LEVELS
 
+
 def pytest_addoption(parser):
     """Describes that the function adds a command-line option to set the
      HTML log level."""
