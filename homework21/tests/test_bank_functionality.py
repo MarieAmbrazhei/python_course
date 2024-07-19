@@ -71,7 +71,8 @@ def test_is_instance(deposit_1):
     Test if dep_1 is an instance of Deposit.
     """
     dep_1 = deposit_1
-    log.info('Starting homework21 to verify if dep_1 is an instance of Deposit.')
+    log.info('Starting homework21 to verify if dep_1 is an instance of '
+             'Deposit.')
     assert isinstance(dep_1, Deposit), (
         f'dep_1 is not an instance of Deposit. Actual type: {type(dep_1)}'
     )
@@ -87,8 +88,8 @@ def test_deposit_total_sum(initial_bank, deposit_1):
     dep_1 = deposit_1
     result = bank_1.deposit(dep_1)
     log.info(
-        'Starting homework21 to verify that the deposit amount is greater than '
-        'the initial amount.')
+        'Starting homework21 to verify that the deposit amount is greater'
+        ' than the initial amount.')
     assert bank_1.deposit(dep_1) > dep_1.amount, (
         f'Deposit result {result} should be greater than the initial amount '
         f'{dep_1.amount}.'
@@ -108,7 +109,8 @@ def test_deposit_is_true(initial_bank, deposit_1):
     dep_1 = deposit_1
 
     log.info(
-        'Starting homework21 to verify that deposit method returns a truthy value.'
+        'Starting homework21 to verify that deposit method returns a'
+        ' truthy value.'
     )
     assert bank_1.deposit(dep_1), (
         'Deposit method did not return a truthy value.'
