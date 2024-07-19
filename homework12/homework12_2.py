@@ -1,7 +1,7 @@
 """Homework12_2: OOP. Writing and implementing programs."""
 
 
-# Task_2 Bank
+# Task_2 Bank.
 
 class Deposit:
     """ A class to represent a deposit."""
