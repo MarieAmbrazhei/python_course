@@ -1,4 +1,5 @@
 # mypy: ignore-errors
+
 """Homework12_2:  OOP. Writing and implementing programs."""
 
 
