@@ -17,4 +17,6 @@ venv/
 
 # Pytest specific files
 .pytest_cache/
+*.html
+report.html
 
