@@ -49,17 +49,20 @@ class TestLibrary(unittest.TestCase):
         self.assertTrue(self.user_1.take_book(self.book1.isbn))
         self.assertIn(self.book1.isbn, User.taken_books)
         log.info(
-            f'Successfully verified: User took book with  {self.book1.isbn} isbn')
+            f'Successfully verified: User took book with  {self.book1.isbn}'
+            f' isbn')
 
     def test_take_book_already_taken(self):
         """Test that a user cannot take a book that is already taken."""
 
         log.info(
-            f'User tries to take an already taken book with {self.book2.isbn} isbn')
+            f'User tries to take an already taken book with {self.book2.isbn} '
+            f'isbn')
         self.user_1.take_book(self.book2.isbn)
         self.assertFalse(self.user_2.take_book(self.book2.isbn))
         log.info(
-            f'Successfully verified: book with {self.book2.isbn} is unavailable,'
+            f'Successfully verified: book with {self.book2.isbn} '
+            f'is unavailable,'
             f' additional info: {Book.books.get(self.book2.isbn)}')
 
     def test_reserve_book_positive(self):
@@ -68,7 +71,8 @@ class TestLibrary(unittest.TestCase):
         self.assertTrue(self.user_1.reserve_book(self.book1.isbn))
         self.assertIn(self.book1.isbn, User.reserved_books)
         log.info(
-            f'Successfully verified: User reserved book with  {self.book1.isbn} '
+            f'Successfully verified: User reserved book with '
+            f' {self.book1.isbn} '
             f'isbn')
 
     def test_reserve_book_already_reserved(self):
