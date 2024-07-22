@@ -32,10 +32,6 @@ class TestLibrary(unittest.TestCase):
         self.user_1 = User('user_id_1')
         self.user_2 = User('user_id_2')
 
-        self.books = {
-            '134527': {'title': 'Sample Book', 'available': False}
-        }
-
     def tearDown(self):
         """
         Clean up after each test.
@@ -49,77 +45,78 @@ class TestLibrary(unittest.TestCase):
 
     def test_take_book_positive(self):
         """Test taking a book that is available."""
-        isbn = '134527'
-        log.info('User tries to take book with 134527 isbn')
-        self.assertTrue(self.user_1.take_book('134527'))
-        self.assertIn('134527', User.taken_books)
-        log.info(f'Successfully verified: User took book with  {isbn} isbn')
+        log.info(f'User tries to take book with {self.book1.isbn} isbn')
+        self.assertTrue(self.user_1.take_book(self.book1.isbn))
+        self.assertIn(self.book1.isbn, User.taken_books)
+        log.info(
+            f'Successfully verified: User took book with  {self.book1.isbn} isbn')
 
     def test_take_book_already_taken(self):
         """Test that a user cannot take a book that is already taken."""
-        isbn = '134527'
-        log.info('User tries to take an already taken book with 134527 isbn')
-        self.user_1.take_book('134527')
-        self.assertFalse(self.user_2.take_book('134527'))
-        log.info(f'Successfully verified: book with {isbn} is unavailable,'
-                 f' additional info: {self.books.get(isbn)}')
+
+        log.info(
+            f'User tries to take an already taken book with {self.book2.isbn} isbn')
+        self.user_1.take_book(self.book2.isbn)
+        self.assertFalse(self.user_2.take_book(self.book2.isbn))
+        log.info(
+            f'Successfully verified: book with {self.book2.isbn} is unavailable,'
+            f' additional info: {Book.books.get(self.book2.isbn)}')
 
     def test_reserve_book_positive(self):
         """Test that a user can successfully reserve a book."""
-        isbn = '234569'
-        log.info('User tries to  reserve  book with 234569 isbn')
-        self.assertTrue(self.user_1.reserve_book('234569'))
-        self.assertIn('234569', User.reserved_books)
-        log.info(f'Successfully verified: User reserved book with  {isbn} '
-                 f'isbn')
+        log.info(f'User tries to  reserve  book with {self.book1.isbn} isbn')
+        self.assertTrue(self.user_1.reserve_book(self.book1.isbn))
+        self.assertIn(self.book1.isbn, User.reserved_books)
+        log.info(
+            f'Successfully verified: User reserved book with  {self.book1.isbn} '
+            f'isbn')
 
     def test_reserve_book_already_reserved(self):
         """Test that a user cannot reserve a book."""
-        isbn = '234569'
         log.info(
             'User tries to  reserve  an already reserved  book with'
-            ' 234569 isbn')
-        self.user_1.reserve_book('234569')
-        self.assertFalse(self.user_2.reserve_book('234569'))
-        log.info(f'Successfully verified: book with {isbn} unavailable,'
-                 f' additional info: {self.books.get(isbn)}')
+            f' {self.book3.isbn} isbn')
+        self.user_1.reserve_book(self.book3.isbn)
+        self.assertFalse(self.user_2.reserve_book(self.book3.isbn))
+        log.info(
+            f'Successfully verified: book with {self.book3.isbn} unavailable,'
+            f' additional info: {Book.books.get(self.book3.isbn)}')
 
     def test_return_not_taken_book_positive(self):
         """Test that a user can successfully return a book."""
-        isbn = '134527'
-        log.info('User tries to  return book with 134527 isbn')
-        self.assertFalse(self.user_1.return_book('134527'))
-        self.assertNotIn('134527', User.taken_books)
+        # isbn = '134527'
+        log.info(f'User tries to  return book with {self.book1.isbn} isbn')
+        self.assertFalse(self.user_1.return_book(self.book1.isbn))
+        self.assertNotIn(self.book1.isbn, User.taken_books)
         log.info(f'Successfully verified: User can not return book with  '
-                 f'{isbn} isbn')
+                 f'{self.book1.isbn} isbn')
 
     def test_return_book_not_taken(self):
         """Test that a user cannot return a book that was not taken."""
-        isbn = '134527'
-        log.info('User tries to  return a not taken book with 134527 isbn')
-        self.assertFalse(self.user_2.return_book('134527'))
         log.info(
-            f'Successfully verified: User can not return book with  {isbn} '
+            f'User tries to return a not taken book with {self.book1.isbn} isbn')
+        self.assertFalse(self.user_2.return_book(self.book1.isbn))
+        log.info(
+            f'Successfully verified: User can not return book with  {self.book1.isbn} '
             f'isbn')
 
     def test_release_book_positive(self):
         """Test that a user can successfully release a reserved book."""
-        isbn = '239874'
-        log.info('User tries to release book with 239874 isbn')
-        self.user_1.reserve_book('239874')
-        self.assertTrue(self.user_1.release_book('239874'))
-        self.assertNotIn('239874', User.reserved_books)
+        log.info(f'User tries to release book with {self.book1.isbn} isbn')
+        self.user_1.reserve_book(self.book1.isbn)
+        self.assertTrue(self.user_1.release_book(self.book1.isbn))
+        self.assertNotIn(self.book1.isbn, User.reserved_books)
         log.info(
-            f'Successfully verified: User can release book with  {isbn} '
+            f'Successfully verified: User can release book with  {self.book1.isbn} '
             f'isbn')
 
     def test_release_book_not_reserved(self):
         """Test that a user cannot release a book that was not reserved."""
-        isbn = '239874'
-        log.info('User tries to release a not reserved book with 239874 isbn')
-        self.assertFalse(self.user_2.release_book('239874'))
         log.info(
-            f'Successfully verified: User can not release book with  {isbn} '
+            f'User tries to release a not reserved book with {self.book1.isbn} isbn')
+        self.assertFalse(self.user_2.release_book(self.book1.isbn))
+        log.info(
+            f'Successfully verified: User can not release book with  {self.book1.isbn} '
             f'isbn')
 
     def test_take_invalid_book(self):
