@@ -84,7 +84,6 @@ class TestLibrary(unittest.TestCase):
 
     def test_return_not_taken_book_positive(self):
         """Test that a user can successfully return a book."""
-        # isbn = '134527'
         log.info(f'User tries to  return book with {self.book1.isbn} isbn')
         self.assertFalse(self.user_1.return_book(self.book1.isbn))
         self.assertNotIn(self.book1.isbn, User.taken_books)
@@ -94,10 +93,12 @@ class TestLibrary(unittest.TestCase):
     def test_return_book_not_taken(self):
         """Test that a user cannot return a book that was not taken."""
         log.info(
-            f'User tries to return a not taken book with {self.book1.isbn} isbn')
+            f'User tries to return a not taken book with {self.book1.isbn} '
+            f'isbn')
         self.assertFalse(self.user_2.return_book(self.book1.isbn))
         log.info(
-            f'Successfully verified: User can not return book with  {self.book1.isbn} '
+            f'Successfully verified: User can not return book with '
+            f' {self.book1.isbn} '
             f'isbn')
 
     def test_release_book_positive(self):
@@ -107,16 +108,19 @@ class TestLibrary(unittest.TestCase):
         self.assertTrue(self.user_1.release_book(self.book1.isbn))
         self.assertNotIn(self.book1.isbn, User.reserved_books)
         log.info(
-            f'Successfully verified: User can release book with  {self.book1.isbn} '
+            f'Successfully verified: User can release book with '
+            f' {self.book1.isbn} '
             f'isbn')
 
     def test_release_book_not_reserved(self):
         """Test that a user cannot release a book that was not reserved."""
         log.info(
-            f'User tries to release a not reserved book with {self.book1.isbn} isbn')
+            f'User tries to release a not reserved book with '
+            f'{self.book1.isbn} isbn')
         self.assertFalse(self.user_2.release_book(self.book1.isbn))
         log.info(
-            f'Successfully verified: User can not release book with  {self.book1.isbn} '
+            f'Successfully verified: User can not release book with '
+            f' {self.book1.isbn} '
             f'isbn')
 
     def test_take_invalid_book(self):
