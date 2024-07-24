@@ -1,5 +1,7 @@
 *** Settings ***
-Library    library_keywords.py
+Library           homework22/robot_resources/library_keywords.py
+Library           BuiltIn
+Library           OperatingSystem
 
 *** Test Cases ***
 Test Take Book Positive

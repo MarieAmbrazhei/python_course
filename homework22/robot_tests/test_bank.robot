@@ -1,12 +1,8 @@
 *** Settings ***
-Library           bank_keywords.py
+Library           homework22/robot_resources/bank_keywords.py
 Library           BuiltIn
 Library           OperatingSystem
-
-
-*** Variables ***
-${EXPECTED_AMOUNT_DEPOSIT_1}    12203.909614
-${EXPECTED_AMOUNT_DEPOSIT_2}    18305.864421
+Resource          homework22/robot_resources/variables.robot
 
 *** Test Cases ***
 Test Deposit 1
@@ -41,6 +37,7 @@ Test Deposit Total Sum
     ${bank}=    Create Bank    10
     ${deposit_1}=    Create Deposit    10000    2
     ${result}=    Deposit Money    ${bank}    ${deposit_1}
+#    ${initial_amount}=    Evaluate    ${deposit_1.amount}
     Log Message    Starting test to verify that the deposit amount is greater than the initial amount.
     Should Be True    ${result} > ${deposit_1.amount}
     Log Message    Successfully verified that deposit result ${result} is greater than the initial amount ${deposit_1.amount}.

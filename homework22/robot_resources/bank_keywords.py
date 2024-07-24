@@ -1,8 +1,3 @@
-"""This module provides Robot Framework keywords
-for creating and managing Bank and Deposit objects
-from the homework12.homework12_2 module.
-"""
-
 from robot.api.deco import keyword
 from homework12.homework12_2 import Bank, Deposit
 from pymar_log import logger as log

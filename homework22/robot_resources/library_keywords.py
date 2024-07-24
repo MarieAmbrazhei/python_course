@@ -1,11 +1,6 @@
-"""This module provides Robot Framework keywords
-for creating and managing Book and User objects
-from the homework12.homework12_1 module.
-"""
-
-from robot.api.deco import keyword
 from homework12.homework12_1 import Book, User
 from pymar_log import logger as log
+from robot.api.deco import keyword
 
 
 @keyword
