@@ -10,6 +10,8 @@ from homework12.homework12_1 import User, Book
 
 
 def pytest_addoption(parser):
+    """Describes that the function adds a command-line option to set the
+        HTML log level."""
     parser.addoption(
         "--log_cli_level",
         action="store",
@@ -24,7 +26,8 @@ def pytest_addoption(parser):
 
 
 def pytest_configure(config):
-    # Handle the --html option if pytest-html plugin is installed
+    """Describes that the function configures logging based on the
+    command-line option"""
     if config.pluginmanager.hasplugin("html"):
         htmlpath = config.getoption("--html") or "report.html"
         config.option.htmlpath = htmlpath
