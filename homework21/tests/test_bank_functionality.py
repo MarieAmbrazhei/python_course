@@ -1,65 +1,21 @@
 """Homework21_1: test_bank_functionality"""
-
 import pytest
-from homework12.homework12_2 import Bank, Deposit
+
+from homework12.homework12_2 import Deposit
 from pymar_logging import logger as log
 
 
-@pytest.fixture
-def initial_bank():
-    """
-    Creates and deletes banks
-    """
-    bank_1 = Bank(10)
-
-    yield bank_1
-    del bank_1
-
-
-@pytest.fixture
-def deposit_1():
-    """
-    Creates and deletes deposits
-    """
-    dep_1 = Deposit(10000, 2
-                    )
-    yield dep_1
-    del dep_1
-
-
-@pytest.fixture
-def deposit_2():
-    """Creates and deletes deposits"""
-    dep_2 = Deposit(15000, 2)
-
-    yield dep_2
-    del dep_2
-
-
-def test_deposit_1(initial_bank, deposit_1):
-    """
-    Test deposit method with dep_1.
-    """
-    bank_1 = initial_bank
-    dep_1 = deposit_1
-    expected_amount = 12203.90961375559
-    result = bank_1.deposit(dep_1)
-    log.info(f'Testing deposit_1: expected {expected_amount}, got {result}')
-    assert round(result, 2) == round(expected_amount, 2), (
-        f'Result {result} does not match the expected amount {expected_amount}'
-    )
-    log.info('Successfully verified deposit calculation')
-
-
-def test_deposit_2(initial_bank, deposit_2):
+@pytest.mark.parametrize('dep, expected_amount',
+                         [(Deposit(10000, 2), 12203.90961375559),
+                          (Deposit(15000, 2),
+                           18305.86442063339)])
+def test_deposit(initial_bank, dep, expected_amount):
     """
     Test deposit method with dep_2.
     """
     bank_1 = initial_bank
-    dep_2 = deposit_2
-    expected_amount = 18305.86442063339
-    result = bank_1.deposit(dep_2)
-    log.info(f'Testing deposit_2: expected {expected_amount}, got {result}')
+    result = bank_1.deposit(dep)
+    log.info(f'Testing deposit: expected {expected_amount}, got {result}')
     assert round(result, 2) == round(expected_amount, 2), (
         f'Result {result} does not match the expected amount {expected_amount}'
     )

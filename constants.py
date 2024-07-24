@@ -6,3 +6,5 @@ LOG_LEVELS = {
     "DEBUG": 10,
     "NOTSET": 0,
 }
+
+INCORRECT_ISBN = 1111111
