@@ -1,6 +1,6 @@
+from robot.api.deco import keyword
 from homework12.homework12_1 import Book, User
 from pymar_log import logger as log
-from robot.api.deco import keyword
 
 
 @keyword
