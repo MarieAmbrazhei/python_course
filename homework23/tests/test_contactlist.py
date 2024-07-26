@@ -1,3 +1,5 @@
+"""Homework23: Selenium locators"""
+
 from homework23.pages.add_contact_page_locators import AddContactPage
 from homework23.pages.login_page_locators import LoginPage
 from homework23.pages.contact_list_page_locators import ContactListPage
@@ -6,8 +8,6 @@ from homework23.pages.common_page_locators import CommonPageLocators
 from homework23.pages.contact_details_page import ContactDetails
 from homework23.pages.contact_edit_page_locators import ContactEdit
 from homework23.pages.page_urls import PageUrls
-
-"""Homework23: Selenium locators"""
 
 # Open your web browser
 print(f'Open the login page: {PageUrls.LOGIN_PAGE_URL}')
