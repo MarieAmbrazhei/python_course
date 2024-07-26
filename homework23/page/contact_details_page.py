@@ -1,8 +1,10 @@
-""" Contact details page pages """
+""" Contact details page page """
 
 
 class ContactDetails:
-    """Class store contact details page locators"""
+    """
+    Class store contact details page locators
+    """
 
     EDIT_CONTACT_BUTTON = '#edit-contact'
     DELETE_CONTACT_BUTTON = '#delete'

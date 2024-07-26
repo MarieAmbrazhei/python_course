@@ -16,7 +16,7 @@ class Book:
         self.pages = pages
         self.books.update({self.isbn: {'name': self.name,
                                        'author': self.author,
-                                       'pages': self.pages}})
+                                       'page': self.pages}})
 
 
 class User(Book):

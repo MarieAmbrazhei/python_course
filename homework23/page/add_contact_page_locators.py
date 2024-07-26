@@ -1,8 +1,10 @@
-"""Add contact page pages"""
+"""Add contact page page"""
 
 
 class AddContactPage:
-    """ Class store add contact page locators"""
+    """
+    Class store add contact page locators
+    """
     ADD_FIRSTNAME_INPUT = '#firstName'
     ADD_LASTNAME_INPUT = '#lastName'
     ADD_BIRTHDATE_INPUT = '#birthdate'

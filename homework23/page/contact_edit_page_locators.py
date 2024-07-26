@@ -1,8 +1,10 @@
-"""Edit contact page pages"""
+"""Edit contact page page"""
 
 
 class ContactEdit:
-    """Class store contact edit page locators"""
+    """
+    Class store contact edit page locators
+    """
 
     ADD_FIRSTNAME_INPUT = '//input[@id="firstName"]'
     ADD_LASTNAME_INPUT = '//input[@id="lastName"]'
