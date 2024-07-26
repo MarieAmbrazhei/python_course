@@ -3,8 +3,8 @@ name: Flake8
 on:
   workflow_dispatch:
   pull_request:
-    types: [opened, reopened, edited, synchronize]
-    branches: [main]
+    types: [ opened, reopened, edited, synchronize ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -21,5 +21,10 @@ jobs:
           pip install flake8
       - name: Analysing the code with flake8
         run: |
+          # Используем конфигурационный файл .flake8 или setup.cfg
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 . --count --max-complexity=10 --statistics
+
+          # Явное указание max-line-length в командной строке
           flake8 . --count --max-complexity=10 --max-line-length=150 --statistics
+
