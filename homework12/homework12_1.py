@@ -1,4 +1,5 @@
 """Homework12_1: OOP. Writing and implementing programs."""
+from pymar_logger import logger as log
 
 
 # Task_1 Library
@@ -47,13 +48,14 @@ class User(Book):
                     self.taken_books):
                 self.taken_books.append(isbn)
                 self.update_user_book_status(isbn)
+                log.info(f'User took book with  {isbn} isbn')
                 return True
 
-            print(f'book with {isbn} is unavailable, '
-                  f'additional info: {self.books.get(isbn)}')
+            log.warning(f'book with {isbn} is unavailable,'
+                        f'additional info: {self.books.get(isbn)}')
             return False
 
-        print(f'we do not have book with id "{isbn}"')
+        log.info(f'we do not have book with id "{isbn}"')
         return False
 
     def reserve_book(self, isbn):
@@ -64,13 +66,14 @@ class User(Book):
                     in self.taken_books):
                 self.reserved_books.append(isbn)
                 self.update_user_book_status(isbn)
+                log.info(f'User reserved book with {isbn} isbn')
                 return True
 
-            print(f'book with {isbn} unavailable, '
-                  f'additional info: {self.books.get(isbn)}')
+            log.warning(f'book with {isbn} unavailable, '
+                        f' additional info: {self.books.get(isbn)}')
             return False
 
-        print(f'we do not have book with id "{isbn}"')
+        log.info(f'we do not have book with id "{isbn}"')
         return False
 
     def return_book(self, isbn):
@@ -81,14 +84,14 @@ class User(Book):
                     self.users_books[self.user_id]):
                 self.taken_books.remove(isbn)
                 self.users_books[self.user_id].remove(isbn)
+                log.info(f'User returned book with {isbn} isbn')
                 return True
 
-            print(
-                f'The book with {isbn} was not taken '
-                f'by user with id {self.user_id}',
-                f'additional info: {self.books.get(isbn)}')
+            log.warning(
+                f'The book with {isbn} was not taken by user with id'
+                f' {self.user_id}, additional info: {self.books.get(isbn)}')
             return False
-        print(f'you can not return book with id "{isbn}"')
+        log.info(f'you can not return book with id "{isbn}"')
         return False
 
     def release_book(self, isbn):
@@ -98,15 +101,16 @@ class User(Book):
                     and isbn in self.users_books[self.user_id]):
                 self.reserved_books.remove(isbn)
                 self.users_books[self.user_id].remove(isbn)
+                log.info(f'User release book with {isbn} isbn')
                 return True
 
-            print(
+            log.warning(
                 f'The book with {isbn} was not reserved '
                 f'by user with id {self.user_id}'
-                f'additional info: {self.books.get(isbn)}')
+                f' additional info: {self.books.get(isbn)}')
             return False
 
-        print(
+        log.info(
             f'you can not release book with id "{isbn}", '
             f'we do not have it')
         return False
