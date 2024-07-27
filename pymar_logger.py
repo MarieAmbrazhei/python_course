@@ -1,3 +1,7 @@
+"""
+This script configures a logger for an application.
+"""
+
 import logging
 
 formatter = logging.Formatter('[%(asctime)s] %(levelname)s - %(message)s')
