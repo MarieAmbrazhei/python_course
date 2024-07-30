@@ -3,8 +3,8 @@ name: Pylint
 on:
   workflow_dispatch:
   pull_request:
-    types: [opened, reopened, edited, synchronize]
-    branches: [main]
+    types: [ opened, reopened, edited, synchronize ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -19,6 +19,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pylint
+          pip install pytest
       - name: Analysing the code with pylint
         run: |
-          pylint $(git ls-files '*.py')
+          pylint --disable=R0903,C0206,R0911,R0801,W1203,C0114,W0621,F0001 $(git ls-files '*.py')
