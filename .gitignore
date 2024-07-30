@@ -20,3 +20,14 @@ venv/
 *.html
 report.html
 
+pytestdebug.log
+
+# Pytest-html
+assets/
+logs/
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
