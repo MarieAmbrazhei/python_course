@@ -1,7 +1,7 @@
 """This module contains shared fixtures for pytest that can be used across
 multiple test files."""
 
-from typing import Tuple
+from typing import Tuple, Generator
 import pytest
 from pymar_logging import logger as log
 from constants import LOG_LEVELS
@@ -77,7 +77,7 @@ def deposit_2():
 
 
 @pytest.fixture
-def setup_books() -> Tuple[Book, ...]:
+def setup_books() -> Generator[Book, ...]:
     """Creates and deletes books"""
     Book.taken_books = []
     Book.reserved_books = []
@@ -97,7 +97,7 @@ def setup_books() -> Tuple[Book, ...]:
 
 
 @pytest.fixture
-def user_1() -> User:
+def user_1() -> Generator[User]:
     """
     Creates and deletes user_1
     """
@@ -107,7 +107,7 @@ def user_1() -> User:
 
 
 @pytest.fixture
-def user_2() -> User:
+def user_2() -> Generator[User]:
     """
     Creates and deletes user_2
     """
