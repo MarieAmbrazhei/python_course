@@ -6,6 +6,6 @@ class CommonPageLocators:
     Class store common  page locators
     """
 
-    LOGIN_SUBMIT_BUTTON = '#submit'
-    LOGIN_CANCEL_BUTTON = '#cancel'
-    LOGIN_LOGOUT_BUTTON = '#logout'
+    LOCATOR_SUBMIT_BUTTON = '#submit'
+    LOCATOR_CANCEL_BUTTON = '#cancel'
+    LOCATOR_LOGOUT_BUTTON = '#logout'
