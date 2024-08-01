@@ -55,7 +55,7 @@ print(f'Fill in the state of province field: {AddContactPage.ADD_STATE_PROVINCE_
 print(f'Fill in the postal code field: {AddContactPage.ADD_POSTAL_CODE_INPUT}')
 print(f'Fill in the country field: {AddContactPage.ADD_COUNTRY_INPUT}')
 
-print(f'Click Submit button: {CommonPageLocators.LOCATOR_SUBMIT_BUTTON')
+print(f'Click Submit button: {CommonPageLocators.LOCATOR_SUBMIT_BUTTON}')
 
 # Edit contact
 # CONTACT LIST PAGE
