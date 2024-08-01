@@ -7,13 +7,14 @@ from homework23.page.contact_details_page import ContactDetails
 from homework23.page.contact_list_page_locators import ContactListPage
 from homework24.resources.constants import contact_list_data, updated_contact_list_data
 from homework24.resources.utils import fill_field, random_int
+from pymar_logger import logger as log
 
 
 def test_add_contact(wait):
     """
     Adds a new contact to the contact list.
     """
-
+    log.info("Starting verification that a user can add a contact with all required fields.")
     btn_add_contact = wait.until(
         EC.element_to_be_clickable(ContactListPage.ADD_NEW_CONTACT_BUTTON)
     )
@@ -29,15 +30,17 @@ def test_add_contact(wait):
     contact_table_row = wait.until(
         EC.presence_of_element_located(ContactListPage.CONTACT_TABLE_FIRST_ROW)
     )
+    log.info("New contact row located in the contact list.")
     contact_table_row.click()
     assert contact_table_row is not None
+    log.info("Contact addition verified successfully.")
 
 
 def test_edit_contact(browser_session, wait):
     """
     Edit a new contact to the contact list.
     """
-
+    log.info("Starting the process to edit an existing contact.")
     contact_table_row = wait.until(
         EC.element_to_be_clickable(ContactListPage.CONTACT_TABLE_FIRST_ROW)
     )
@@ -64,7 +67,7 @@ def test_edit_contact(browser_session, wait):
         EC.element_to_be_clickable(CommonPageLocators.LOCATOR_SUBMIT_BUTTON)
     )
     btn_submit.click()
-
+    log.info("Waiting for the contact details to be updated.")
     # Wait until form is populated (JavaScript condition is true)
     wait.until(
         lambda driver: driver.execute_script(
@@ -73,6 +76,7 @@ def test_edit_contact(browser_session, wait):
 
     email = browser_session.find_element(By.CSS_SELECTOR, '#email').text
     assert email == updated_contact_list_data.get(ContactEdit.ADD_EMAIL_INPUT)
+    log.info("Email address verification successful.")
 
 
 def test_delete_contact(browser_session, wait):
@@ -80,6 +84,7 @@ def test_delete_contact(browser_session, wait):
     Deletes a contact on a web page.
     """
     # add contact
+    log.info("Starting the process to delete a contact.")
     btn_add_contact = wait.until(
         EC.element_to_be_clickable(ContactListPage.ADD_NEW_CONTACT_BUTTON)
     )
@@ -108,7 +113,8 @@ def test_delete_contact(browser_session, wait):
 
     alert = browser_session.switch_to.alert
     alert.accept()
-
+    log.info(f"Verifying that the contact with phone number {random_tel_number} has been deleted.")
     deleted_contact = browser_session.find_elements(
         *(By.XPATH, ContactListPage.CONTACT_TABLE_EXACT_NUMBER.format(random_tel_number)))
     assert deleted_contact == [], f'The contact with {random_tel_number} was found!'
+    log.info("Contact deletion verified successfully.")
