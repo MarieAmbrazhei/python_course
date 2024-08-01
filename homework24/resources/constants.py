@@ -32,4 +32,3 @@ updated_contact_list_data = {
     ContactEdit.ADD_POSTAL_CODE_INPUT: '654393',
     ContactEdit.ADD_COUNTRY_INPUT: 'Belarus',
 }
-
