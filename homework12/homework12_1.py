@@ -1,5 +1,5 @@
 """Homework12_1: OOP. Writing and implementing programs."""
-from pymar_logger import logger as log
+from pymar_logging import logger as log
 
 
 # Task_1 Library
@@ -101,16 +101,15 @@ class User(Book):
                     and isbn in self.users_books[self.user_id]):
                 self.reserved_books.remove(isbn)
                 self.users_books[self.user_id].remove(isbn)
-                log.info(f'User release book with {isbn} isbn')
                 return True
 
-            log.warning(
+            print(
                 f'The book with {isbn} was not reserved '
                 f'by user with id {self.user_id}'
-                f' additional info: {self.books.get(isbn)}')
+                f'additional info: {self.books.get(isbn)}')
             return False
 
-        log.info(
+        print(
             f'you can not release book with id "{isbn}", '
             f'we do not have it')
         return False
