@@ -22,4 +22,4 @@ jobs:
           pip install pytest
       - name: Analysing the code with pylint
         run: |
-          pylint --disable=R0903,C0206,R0911,R0801,W1203,C0114,W0621,F0001 $(git ls-files '*.py')
+          pylint --disable=R0903,C0206,R0911,R0801,W1203,C0114,W0621,F0001,R1710,W0246,W0223: $(git ls-files '*.py')

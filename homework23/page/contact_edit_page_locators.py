@@ -1,8 +1,9 @@
-"""Edit contact page page"""
 from selenium.webdriver.common.by import By
 
+"""Edit contact page page"""
 
-class ContactEdit:
+
+class EditContactPageLocators:
     """
     Class store contact edit page locators
     """
