@@ -1,6 +1,5 @@
-from selenium.webdriver.common.by import By
-
 """ Contact details page page """
+from selenium.webdriver.common.by import By
 
 
 class ContactDetailsLocators:

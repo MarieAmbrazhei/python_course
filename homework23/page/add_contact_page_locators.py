@@ -1,6 +1,5 @@
-from selenium.webdriver.common.by import By
-
 """Add contact page page"""
+from selenium.webdriver.common.by import By
 
 
 class AddContactPageLocators:
