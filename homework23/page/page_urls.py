@@ -3,7 +3,7 @@
 
 class PageUrls:
     """
-    Class store page urls locators
+    Class store page urls locators.
     """
 
     LOGIN_PAGE_URL_ = 'https://thinking-tester-contact-list.herokuapp.com/'
