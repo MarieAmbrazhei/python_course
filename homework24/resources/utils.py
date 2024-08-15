@@ -11,7 +11,7 @@ def fill_field(wait, locator, value):
     input_field.send_keys(value)
 
 
-def random_int() -> int:
+def random_int(limit: int = 11) -> int:
     """
     Generates a random integer formed by concatenating shuffled digits from 1 to 10.
     """
