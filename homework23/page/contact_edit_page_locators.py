@@ -2,7 +2,7 @@
 from selenium.webdriver.common.by import By
 
 
-class ContactEdit:
+class EditContactPageLocators:
     """
     Class store contact edit page locators
     """

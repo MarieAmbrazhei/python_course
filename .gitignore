@@ -19,7 +19,7 @@ venv/
 .pytest_cache/
 *.html
 report.html
-
+test_report/
 pytestdebug.log
 
 # Pytest-html
