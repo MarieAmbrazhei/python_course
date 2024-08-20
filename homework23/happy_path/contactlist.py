@@ -4,7 +4,7 @@ from homework23.page.login_page_locators import LoginPage
 from homework23.page.contact_list_page_locators import ContactListPage
 from homework23.page.add_user_page_locators import AddUserPage
 from homework23.page.common_page_locators import CommonPageLocators
-from homework23.page.contact_details_page import ContactDetails
+from homework23.page.contact_details_page_locators import ContactDetails
 from homework23.page.contact_edit_page_locators import ContactEdit
 from homework23.page.page_urls import PageUrls
 
