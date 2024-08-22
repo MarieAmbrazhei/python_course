@@ -3,14 +3,29 @@ from selenium.webdriver.support import expected_conditions as EC
 from homework23.page.add_contact_page_locators import AddContactPage
 from homework23.page.contact_edit_page_locators import ContactEdit
 from homework23.page.common_page_locators import CommonPageLocators
-from homework23.page.contact_details_page import ContactDetails
+from homework23.page.contact_details_page_locators import ContactDetails
 from homework23.page.contact_list_page_locators import ContactListPage
-from homework24.resources.constants import contact_list_data, updated_contact_list_data
-from homework24.resources.utils import fill_field, random_int
+from homework24.resources.constants import updated_contact_list_data
+from homework24.resources.utils import fill_field, random_int, generate_contact_data
 from pymar_logger import logger as log
+import pytest
 
 
-def test_add_contact(wait):
+def test_delete_record(browser_session, wait):
+    counter = 0
+    while elem := wait.until(
+            EC.element_to_be_clickable(ContactListPage.CONTACT_TABLE_FIRST_ROW)):
+        elem.click()
+        button = wait.until(EC.element_to_be_clickable(ContactDetails.DELETE_CONTACT_BUTTON))
+        button.click()
+        alert = browser_session.switch_to.alert
+        alert.accept()
+        counter += 1
+        print(f'deleted records: {counter}')
+
+
+@pytest.mark.parametrize('count', range(100))
+def test_add_contacts(wait, count):
     """
     Adds a new contact to the contact list.
     """
@@ -19,13 +34,14 @@ def test_add_contact(wait):
         EC.element_to_be_clickable(ContactListPage.ADD_NEW_CONTACT_BUTTON)
     )
     btn_add_contact.click()
-
+    contact_list_data = generate_contact_data()
     list(map(lambda item: fill_field(wait, *item), contact_list_data.items()))
 
     btn_submit = wait.until(
         EC.element_to_be_clickable(CommonPageLocators.LOCATOR_SUBMIT_BUTTON)
     )
     btn_submit.click()
+    # time.sleep(1000)
 
     contact_table_row = wait.until(
         EC.presence_of_element_located(ContactListPage.CONTACT_TABLE_FIRST_ROW)
@@ -50,7 +66,6 @@ def test_edit_contact(browser_session, wait):
         EC.element_to_be_clickable(ContactDetails.EDIT_CONTACT_BUTTON)
     )
     btn_edit_contact.click()
-
     # Wait until form is populated (JavaScript condition is true)
     wait.until(
         lambda driver: driver.execute_script(
@@ -79,7 +94,8 @@ def test_edit_contact(browser_session, wait):
     log.info("Email address verification successful.")
 
 
-def test_delete_contact(browser_session, wait):
+@pytest.mark.parametrize('count', list(range(1)))
+def test_delete_contact(browser_session, wait, count):
     """
     Deletes a contact on a web page.
     """
@@ -93,7 +109,7 @@ def test_delete_contact(browser_session, wait):
     random_tel_number = random_int()
     contact_list_data[AddContactPage.ADD_PHONE_INPUT] = random_tel_number
 
-    list(map(lambda item: fill_field(wait, *item), contact_list_data.items()))
+    list(map(lambda item: fill_field(wait, *item), updated_contact_list_data.items()))
 
     btn_submit = wait.until(
         EC.element_to_be_clickable(CommonPageLocators.LOCATOR_SUBMIT_BUTTON)
